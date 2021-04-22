@@ -2,10 +2,13 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Block extends JApplet{
+    private int x = 100;
+    private int y = 100;
+
     Block(){
         JFrame frame = new JFrame() {
             @Override public void paint(Graphics g) {
-                g.drawRect(100, 100, 50, 100);
+                g.drawRect(x, y, 30, 30);
             }
         };
 
