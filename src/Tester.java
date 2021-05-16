@@ -2,22 +2,14 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
-public class Tester extends JFrame {
-    public Tester() {
-        //this.add(new JBlock(100,30));
-        //this.add(new TBlock(0, 30));
-        //this.add(new ZBlock(200, 30));
-        //this.add(new IBlock(150, 30));
-        //this.add(new LBlock(100,30));
-        //this.add(new OBlock(50, 30));
-        this.add(new SBlock(80,30));
-    }
+public class Tester {
     public static void main(String args[]) {
-        Tester test = new Tester();
-        test.setSize(318,638);
-        test.setVisible(true);
-        test.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        test.setResizable(false);
-        test.setLocationRelativeTo(null);
+        JFrame frame = new JFrame();
+        Falling fall = new Falling(30,30);
+        frame.add(fall);
+        frame.setVisible(true);
+        frame.setSize(400,400);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Board board = new Board();
     }
 }
