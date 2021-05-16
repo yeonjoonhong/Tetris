@@ -1,5 +1,5 @@
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
 public class Block extends JApplet{
     private int x = 100;
@@ -8,20 +8,17 @@ public class Block extends JApplet{
     Block(){
         JFrame frame = new JFrame() {
             @Override public void paint(Graphics g) {
-<<<<<<< HEAD
                 g.drawRect(x, y, 30, 30);
-=======
                 g.drawRect(100, 100, 50, 100);
                 Graphics2D g2d = (Graphics2D)g;
->>>>>>> Rotation logic
             }
         };
-
 
         frame.setSize(300, 400);
         frame.setTitle("Tetris Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         frame.setVisible(true);
     }
 
