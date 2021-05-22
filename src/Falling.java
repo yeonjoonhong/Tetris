@@ -36,7 +36,7 @@ public class Falling extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {    //Timer calls this method every second
-        if (y < 570) {      //Rectangle stops falling when it reaches the bottom
+        if (y < 540) {      //Rectangle stops falling when it reaches the bottom
             y += 30;        //Falling Logic
         }
         repaint();      //Refresh and Repaint

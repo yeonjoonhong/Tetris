@@ -13,7 +13,9 @@ public class Tester extends JFrame {
         this.add(new SBlock(80,30));
     }
     public static void main(String args[]) {
+        Falling fall = new Falling(100,0);
         Tester test = new Tester();
+        test.add(fall);
         test.setSize(318,638);
         test.setVisible(true);
         test.setDefaultCloseOperation(EXIT_ON_CLOSE);
