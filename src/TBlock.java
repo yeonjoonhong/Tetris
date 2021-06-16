@@ -1,28 +1,34 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class TBlock extends JPanel {
-    private boolean[][] tBlocks = {{false, true, false},    //True = block is colored
-                                   {true, true, true},      //False = block is not colored
+public class TBlock extends Block {
+    private boolean[][] tBlocks = {{false, true, false},     //True = colored
+                                   {true, true, true},     //False = not colored
                                    {false, false, false}};
-    private int blockSize;
-    private int x;
-    public TBlock (int x, int blockSize) {
-        this.blockSize = blockSize;     //Size of one block
-        this.x = x;     //Initial x position
+    public TBlock (int x, int y, int blockSize) {
+        super(x, y, blockSize);
     }
+
     @Override
-    public void paintComponent(Graphics g) {    //Drawing the T block
+    public void paintComponent(Graphics g) {        //Drawing S block
         super.paintComponent(g);
         for (int row = 0; row < tBlocks.length; row++) {    //Every row
             for (int col = 0; col < tBlocks[0].length; col++) {     //Every column
-                if(tBlocks[row][col]) {     //Only draws if it is instructed (true)
-                    g.setColor(Color.RED);      //Color
-                    g.fillRect(x + col*blockSize, row*blockSize, blockSize, blockSize);     //Fills in the block
+                if(tBlocks[row][col]) {     //Only colors if instructed (true)
+                    g.setColor(Color.GREEN);
+                    g.fillRect(getX() + col*getBlockSize(), getY() + row*getBlockSize(), getBlockSize(), getBlockSize());   //First two declarations represent position; colors appropriate blocks
                     g.setColor(Color.BLACK);
-                    g.drawRect(x + col*blockSize, row*blockSize, blockSize, blockSize);     //Grid for block
+                    g.drawRect(getX() + col*getBlockSize(), getY() + row*getBlockSize(), getBlockSize(), getBlockSize());     //Grid for block
                 }
             }
         }
     }
+
+    public boolean[][] getBlocks() {
+        return tBlocks;
+    }
+    public void setBlocks (boolean[][] frame) {
+        tBlocks = frame;
+    }
 }
+

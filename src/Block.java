@@ -1,32 +1,41 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class Block extends JApplet{
-    private int x = 100;
-    private int y = 100;
+public class Block extends JComponent {
+    private int blockSize;
+    private int x;
+    private int y;
 
-    Block(){
-        JFrame frame = new JFrame() {
-            @Override public void paint(Graphics g) {
-                g.drawRect(x, y, 30, 30);
-                g.drawRect(100, 100, 50, 100);
-                Graphics2D g2d = (Graphics2D)g;
-            }
-        };
-
-        frame.setSize(300, 400);
-        frame.setTitle("Tetris Game");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setResizable(false);
-        frame.setVisible(true);
+    public Block (int x, int y, int blockSize) {
+        this.blockSize = blockSize;
+        this.x = x;     //Initial x position
+        this.y = y;
     }
 
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        Block m = new Block();
-
+    @Override
+    public void paintComponent(Graphics g) {        //Drawing S block
+        super.paintComponent(g);
     }
 
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
+    public void setX (int num) {
+        x = num;
+    }
+    public void setY (int num) {
+        y = num;
+    }
+    public int getBlockSize() {
+        return blockSize;
+    }
 
+    public boolean[][] getBlocks() {
+        boolean[][] placeHolder = new boolean[0][0];
+        return placeHolder;
+    }
+    public void setBlocks (boolean[][] array) {}
 }

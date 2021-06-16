@@ -1,28 +1,34 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class JBlock extends JPanel {
-    private boolean[][] jBlocks = {{true, false, false},        //True = blocks that are colored
-                                   {true, true, true},          //False = blocks that are NOT colored
+public class JBlock extends Block {
+    private boolean[][] jBlocks = {{true, false, false},     //True = colored
+                                   {true, true, true},     //False = not colored
                                    {false, false, false}};
-    private int blockSize;
-    private int x;
-    public JBlock (int x, int blockSize) {
-        this.blockSize = blockSize;
-        this.x = x;     //Initial x position
+    public JBlock (int x, int y, int blockSize) {
+        super(x, y, blockSize);
     }
+
     @Override
-    public void paintComponent(Graphics g) {        //Drawing the J block
+    public void paintComponent(Graphics g) {        //Drawing S block
         super.paintComponent(g);
-        for (int row = 0; row < jBlocks.length; row++) {    //Every Row
-            for (int col = 0; col < jBlocks[0].length; col++) {     //Every Column
-                if(jBlocks[row][col]) {     //Colors only when the value is true
-                    g.setColor(Color.BLUE);     //Color
-                    g.fillRect(x + col*blockSize, row*blockSize, blockSize, blockSize);     //Draws and fills in rectangle
+        for (int row = 0; row < jBlocks.length; row++) {    //Every row
+            for (int col = 0; col < jBlocks[0].length; col++) {     //Every column
+                if(jBlocks[row][col]) {     //Only colors if instructed (true)
+                    g.setColor(Color.GREEN);
+                    g.fillRect(getX() + col*getBlockSize(), getY() + row*getBlockSize(), getBlockSize(), getBlockSize());   //First two declarations represent position; colors appropriate blocks
                     g.setColor(Color.BLACK);
-                    g.drawRect(x + col*blockSize, row*blockSize, blockSize, blockSize);     //Grid for the blocks
+                    g.drawRect(getX() + col*getBlockSize(), getY() + row*getBlockSize(), getBlockSize(), getBlockSize());     //Grid for block
                 }
             }
         }
     }
+
+    public boolean[][] getBlocks() {
+        return jBlocks;
+    }
+    public void setBlocks (boolean[][] frame) {
+        jBlocks = frame;
+    }
 }
+

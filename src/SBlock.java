@@ -1,16 +1,14 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class SBlock extends JPanel {
+public class SBlock extends Block {
     private boolean[][] sBlocks = {{false, true, true},     //True = colored
                                    {true, true, false},     //False = not colored
                                    {false, false, false}};
-    private int blockSize;
-    private int x;
-    public SBlock (int x, int blockSize) {
-        this.blockSize = blockSize;
-        this.x = x;     //Initial x position
+    public SBlock (int x, int y, int blockSize) {
+        super(x, y, blockSize);
     }
+
     @Override
     public void paintComponent(Graphics g) {        //Drawing S block
         super.paintComponent(g);
@@ -18,11 +16,18 @@ public class SBlock extends JPanel {
             for (int col = 0; col < sBlocks[0].length; col++) {     //Every column
                 if(sBlocks[row][col]) {     //Only colors if instructed (true)
                     g.setColor(Color.GREEN);
-                    g.fillRect(x + col*blockSize, row*blockSize, blockSize, blockSize);   //First two declarations represent position; colors appropriate blocks
+                    g.fillRect(getX() + col*getBlockSize(), getY() + row*getBlockSize(), getBlockSize(), getBlockSize());   //First two declarations represent position; colors appropriate blocks
                     g.setColor(Color.BLACK);
-                    g.drawRect(x + col*blockSize, row*blockSize, blockSize, blockSize);     //Grid for block
+                    g.drawRect(getX() + col*getBlockSize(), getY() + row*getBlockSize(), getBlockSize(), getBlockSize());     //Grid for block
                 }
             }
         }
+    }
+
+    public boolean[][] getBlocks() {
+        return sBlocks;
+    }
+    public void setBlocks (boolean[][] frame) {
+        sBlocks = frame;
     }
 }
